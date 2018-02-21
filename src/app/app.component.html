@@ -1,21 +1,41 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="ui container">
+  <div class="ui top inverted menu">
+    <a [routerLink]="['home']" class="header item">
+      <img src="../assets/images/home-background.png">
+      DeMentor
+    </a>
+    <div class="right menu">
+      <div class="item">
+        <div class="ui icon input">
+          <input type="text" placeholder="Пошук..." size="35">
+          <i class="search link icon"></i>
+        </div>
+      </div>
+      <a [routerLink]="['about']" class="item"><i class="info icon"></i>Про нас</a>
+      <a [routerLink]="['improve']" class="item" data-inverted="" data-tooltip="Маєте пропозиції? Напишіть нам про це!"
+         data-position="bottom center"><i class="wizard icon"></i>Зробити нас кращими</a>
+      <a [routerLink]="['profile']" class="item"><i class="user icon"></i>Профіль</a>
+      <a href="#" class="item"><i class="sign out icon"></i>Вихід</a>
+    </div>
+  </div>
 
-<router-outlet></router-outlet>
+  <div class="ui grid">
+    <div class="row">
+      <div class="three wide column">
+        <div class="ui left vertical menu">
+          <a [routerLink]="['home']" class="item"><i class="home icon"></i>Дім</a>
+          <a [routerLink]="['contacts']" class="item"><i class="book icon"></i>Контакти</a>
+          <a [routerLink]="['lessons']" class="item"><i class="comments icon"></i>Мої заняття</a>
+          <a [routerLink]="['posters']" class="item"><i class="tasks icon"></i>Мої оголошення</a>
+          <a [routerLink]="['search']" class="item"><i class="search icon"></i>Пошук оголошень</a>
+          <a [routerLink]="['settings']" class="item"><i class="settings icon"></i>Налаштування</a>
+        </div>
+      </div>
+      <div class="thirteen wide column">
+        <div class="ui raised segment" style="background-color: inherit">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
