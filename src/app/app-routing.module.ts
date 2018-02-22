@@ -1,14 +1,14 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {HomeComponent} from './home/home.component';
-import {ContactsComponent} from './contacts/contacts.component';
-import {LessonsComponent} from './lessons/lessons.component';
-import {PostersComponent} from './posters/posters.component';
-import {SearchComponent} from './search/search.component';
-import {SettingsComponent} from './settings/settings.component';
-import {AboutComponent} from './about/about.component';
-import {MakeUsComponent} from './make-us/make-us.component';
-import {ProfileComponent} from './profile/profile.component';
+import {HomeComponent} from './modules/home/components/home/home.component';
+import {ContactsComponent} from './modules/contacts/components/contacts/contacts.component';
+import {LessonsComponent} from './modules/lessons/components/lessons/lessons.component';
+import {PostersComponent} from './modules/posters/components/posters/posters.component';
+import {SearchComponent} from './modules/search/components/search/search.component';
+import {SettingsComponent} from './modules/settings/components/settings/settings.component';
+import {AboutComponent} from './modules/about/components/about/about.component';
+import {MakeUsComponent} from './modules/make-us/components/make-us/make-us.component';
+import {ProfileComponent} from './modules/profile/components/profile/profile.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
