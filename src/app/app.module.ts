@@ -1,6 +1,8 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
+import {Angular2TokenService} from 'angular2-token';
+
 import {AppRoutingModule} from './app-routing.module';
 
 import {AppComponent} from './app.component';
@@ -14,6 +16,8 @@ import {PostersComponent} from './posters/posters.component';
 import {ProfileComponent} from './profile/profile.component';
 import {SearchComponent} from './search/search.component';
 import {SettingsComponent} from './settings/settings.component';
+import {ToolbarComponent} from './toolbar/toolbar.component';
+import {SideMenuComponent} from './side-menu/side-menu.component';
 
 @NgModule({
   declarations: [
@@ -26,14 +30,16 @@ import {SettingsComponent} from './settings/settings.component';
     PostersComponent,
     ProfileComponent,
     SearchComponent,
-    SettingsComponent
+    SettingsComponent,
+    ToolbarComponent,
+    SideMenuComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SuiModule
   ],
-  providers: [],
+  providers: [Angular2TokenService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
