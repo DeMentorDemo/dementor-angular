@@ -6,13 +6,13 @@ import {HomeModule} from '../home/home.module';
 import {LessonsModule} from '../lessons/lessons.module';
 import {PostersModule} from '../posters/posters.module';
 import {SettingsModule} from '../settings/settings.module';
-import {AppRoutingModule} from '../../app-routing.module';
 import {SearchModule} from '../search/search.module';
+import {SideMenuRoutingModule} from './side-menu-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    AppRoutingModule,
+    SideMenuRoutingModule,
     HomeModule,
     ContactsModule,
     LessonsModule,
@@ -21,7 +21,7 @@ import {SearchModule} from '../search/search.module';
     SettingsModule
   ],
   declarations: [SideMenuComponent],
-  exports: [SideMenuComponent]
+  exports: [SideMenuComponent, SideMenuRoutingModule]
 })
 export class SideMenuModule {
 }
