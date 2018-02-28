@@ -6,15 +6,16 @@ import {LessonsComponent} from '../lessons/components/lessons/lessons.component'
 import {PostersComponent} from '../posters/components/posters/posters.component';
 import {SearchComponent} from '../search/components/search/search.component';
 import {SettingsComponent} from '../settings/components/settings/settings.component';
+import {AuthGuard} from '../auth/auth.guard';
 
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent},
-  {path: 'contacts', component: ContactsComponent},
-  {path: 'lessons', component: LessonsComponent},
-  {path: 'posters', component: PostersComponent},
-  {path: 'search', component: SearchComponent},
-  {path: 'settings', component: SettingsComponent},
+  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: 'contacts', component: ContactsComponent, canActivate: [AuthGuard]},
+  {path: 'lessons', component: LessonsComponent, canActivate: [AuthGuard]},
+  {path: 'posters', component: PostersComponent, canActivate: [AuthGuard]},
+  {path: 'search', component: SearchComponent, canActivate: [AuthGuard]},
+  {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

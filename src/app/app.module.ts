@@ -1,12 +1,16 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {Angular2TokenService} from 'angular2-token';
 import {AppRoutingModule} from './app-routing.module';
 import {SuiModule} from 'ng2-semantic-ui';
 import {AppComponent} from './app.component';
+import {JwtModule} from '@auth0/angular-jwt';
+import {HttpClientModule} from '@angular/common/http';
 
 import {SideMenuModule} from './modules/side-menu/side-menu.module';
 import {ToolbarModule} from './modules/toolbar/toolbar.module';
+import {AuthGuard} from './modules/auth/auth.guard';
+import {AuthService} from './modules/auth/auth.service';
+import {AuthModule} from './modules/auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -16,10 +20,20 @@ import {ToolbarModule} from './modules/toolbar/toolbar.module';
     BrowserModule,
     AppRoutingModule,
     SuiModule,
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('access_token');
+        },
+        whitelistedDomains: ['localhost:4000']
+      }
+    }),
     SideMenuModule,
-    ToolbarModule
+    ToolbarModule,
+    AuthModule
   ],
-  providers: [Angular2TokenService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,0 +1,30 @@
+<form (ngSubmit)="login()" #f="ngForm">
+  <div class="ui form">
+    <div class="field">
+      <label for="email">Email</label>
+      <input id="email"
+             type="email"
+             required
+             name='email'
+             [(ngModel)]="signInUser.email"
+             class="validate">
+    </div>
+
+    <div class="field">
+      <label for="password">Password</label>
+      <input id="password"
+             type="password"
+             required
+             name='password'
+             [(ngModel)]="signInUser.password"
+             class="validate">
+    </div>
+
+    <button type="submit"
+            [disabled]="!(f.valid)"
+            [ngClass]="{'disabled': !(f.valid)}"
+            class="ui button">
+      Login
+    </button>
+  </div>
+</form>
