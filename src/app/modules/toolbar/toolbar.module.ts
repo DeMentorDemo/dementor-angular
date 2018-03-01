@@ -5,7 +5,6 @@ import {AboutModule} from '../about/about.module';
 import {MakeUsModule} from '../make-us/make-us.module';
 import {ProfileModule} from '../profile/profile.module';
 import {ToolbarRoutingModule} from './toolbar-routing.module';
-import {AuthModule} from '../auth/auth.module';
 
 @NgModule({
   imports: [

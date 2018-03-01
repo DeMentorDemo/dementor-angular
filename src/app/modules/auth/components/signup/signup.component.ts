@@ -9,8 +9,6 @@ import {AuthService} from '../../auth.service';
   styleUrls: ['./signup.component.sass']
 })
 export class SignupComponent implements OnInit {
-  apiBase = environment.token_auth_config.apiBase;
-
   signUpUser = {
     email: '',
     password: '',
