@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AuthService} from './modules/auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -6,4 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
+
+  constructor(private authService: AuthService) {
+  }
+
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
 }

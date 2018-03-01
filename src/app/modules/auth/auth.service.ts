@@ -15,6 +15,17 @@ export class AuthService {
 
   }
 
+  public signup(email: string, password: string, password_confirmation: string): Observable<any> {
+    const body = {
+      user: {
+        email: email,
+        password: password,
+        password_confirmation: password_confirmation
+      }
+    };
+    return this.http.post<any>(this.apiBase + '/signup', body);
+  }
+
   public login(email: string, password: string): Observable<any> {
     return this.http.post<any>(this.apiBase + '/login', {email, password})
       .do(res => this.saveToken(res))

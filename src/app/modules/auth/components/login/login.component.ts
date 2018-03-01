@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit {
     password: ''
   };
 
+  errors = '';
+
   constructor(private authService: AuthService,
               private router: Router) {
   }
@@ -25,11 +27,10 @@ export class LoginComponent implements OnInit {
       this.authService.login(this.signInUser.email, this.signInUser.password)
         .subscribe(
           () => {
-            console.log('User is logged in');
-            this.router.navigateByUrl('/');
+            this.router.navigateByUrl('/home');
           },
-          () => {
-            console.log(this.authService.isLoggedIn());
+          (res) => {
+            this.errors = res.error.errors[0];
           }
         );
     }

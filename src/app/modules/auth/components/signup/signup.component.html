@@ -1,6 +1,6 @@
-<div class="ui center aligned grid login-form">
+<div class="ui center aligned grid sign-up-form">
   <div class="six wide column">
-    <form class="ui large form" (ngSubmit)="login()" #f="ngForm">
+    <form class="ui large form" (ngSubmit)="signup()" #f="ngForm">
       <div class="field">
         <div class="ui left icon input">
           <i class="user icon"></i>
@@ -9,7 +9,7 @@
                  placeholder="E-mail address"
                  required
                  name='email'
-                 [(ngModel)]="signInUser.email"
+                 [(ngModel)]="signUpUser.email"
                  class="validate">
         </div>
       </div>
@@ -22,7 +22,20 @@
                  placeholder="Password"
                  required
                  name='password'
-                 [(ngModel)]="signInUser.password"
+                 [(ngModel)]="signUpUser.password"
+                 class="validate">
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="ui left icon input">
+          <i class="lock icon"></i>
+          <input id="password_conformation"
+                 type="password"
+                 placeholder="Password confirmation"
+                 required
+                 name='password_confirmation'
+                 [(ngModel)]="signUpUser.password_confirmation"
                  class="validate">
         </div>
       </div>
@@ -31,9 +44,11 @@
               [disabled]="!(f.valid)"
               [ngClass]="{'disabled': !(f.valid)}"
               class="ui fluid large black submit button">
-        Login
+        Sign Up
       </button>
     </form>
-    <div *ngIf="errors" class="ui error message">{{errors}}</div>
+    <div *ngIf="errors.length" class="ui error message">
+      <div *ngFor="let error of errors">{{error}}</div>
+    </div>
   </div>
 </div>

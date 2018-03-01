@@ -13,7 +13,7 @@
     <a [routerLink]="['about']" class="item"><i class="info icon"></i>Про нас</a>
     <a [routerLink]="['improve']" class="item" data-inverted="" data-tooltip="Маєте пропозиції? Напишіть нам про це!"
        data-position="bottom center"><i class="wizard icon"></i>Зробити нас кращими</a>
-    <a *ngIf="!isLoggedIn()" [routerLink]="['profile']" class="item"><i class="address card outline icon"></i>Регестрація</a>
+    <a *ngIf="!isLoggedIn()" [routerLink]="['signup']" class="item"><i class="address card outline icon"></i>Реєестрація</a>
     <a *ngIf="isLoggedIn()" [routerLink]="['profile']" class="item"><i class="user icon"></i>Профіль</a>
     <a *ngIf="!isLoggedIn()" [routerLink]="['login']" class="item"><i class="sign in icon"></i>Увійти</a>
     <a *ngIf="isLoggedIn()" (click)="logout()" class="item"><i class="sign out icon"></i>Вихід</a>

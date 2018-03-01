@@ -6,11 +6,12 @@
       </div>
     </div>
     <div class="row">
-      <div class="three wide column">
+      <div *ngIf="isLoggedIn()" class="three wide column">
         <app-side-menu></app-side-menu>
       </div>
-      <div class="thirteen wide column">
-        <div class="ui raised segment" style="background-color: inherit">
+
+      <div class="column" [ngClass]="{'thirteen wide':isLoggedIn()}">
+        <div [ngClass]="{'ui raised segment':isLoggedIn()}" style="background-color: inherit">
           <router-outlet></router-outlet>
         </div>
       </div>
