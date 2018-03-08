@@ -11,9 +11,7 @@
       </div>
 
       <div class="column" [ngClass]="{'thirteen wide':isLoggedIn()}">
-        <div [ngClass]="{'ui raised segment':isLoggedIn()}" style="background-color: inherit">
-          <router-outlet></router-outlet>
-        </div>
+        <router-outlet></router-outlet>
       </div>
     </div>
   </div>

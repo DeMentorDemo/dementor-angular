@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
     password: ''
   };
 
-  errors = '';
+  errors = [];
 
   constructor(private authService: AuthService,
               private router: Router) {
@@ -30,9 +30,17 @@ export class LoginComponent implements OnInit {
             this.router.navigateByUrl('/home');
           },
           (res) => {
-            this.errors = res.error.errors[0];
+            this.errors = [];
+            const errors = res.error.errors;
+            for (const key of Object.keys(errors)) {
+              this.errors.push(this.capitalizeFirstLetter(key) + ' ' + errors[key]);
+            }
           }
         );
     }
+  }
+
+  private capitalizeFirstLetter(str: string): string {
+    return str.charAt(0).toUpperCase() + str.slice(1);
   }
 }

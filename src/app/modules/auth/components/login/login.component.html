@@ -34,6 +34,8 @@
         Login
       </button>
     </form>
-    <div *ngIf="errors" class="ui error message">{{errors}}</div>
+    <div *ngIf="errors.length" class="ui error message">
+      <div *ngFor="let error of errors">{{error}}</div>
+    </div>
   </div>
 </div>

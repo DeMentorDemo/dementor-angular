@@ -11,6 +11,8 @@ import {AuthService} from '../../auth.service';
 export class SignupComponent implements OnInit {
   signUpUser = {
     email: '',
+    first_name: '',
+    last_name: '',
     password: '',
     password_confirmation: ''
   };
@@ -25,8 +27,10 @@ export class SignupComponent implements OnInit {
   }
 
   signup() {
-    if (this.signUpUser.email && this.signUpUser.password && this.signUpUser.password_confirmation) {
-      this.authService.signup(this.signUpUser.email, this.signUpUser.password, this.signUpUser.password_confirmation)
+    if (this.signUpUser.email && this.signUpUser.first_name && this.signUpUser.last_name &&
+      this.signUpUser.password && this.signUpUser.password_confirmation) {
+      this.authService.signup(this.signUpUser.email, this.signUpUser.first_name, this.signUpUser.last_name,
+        this.signUpUser.password, this.signUpUser.password_confirmation)
         .subscribe(
           () => {
             this.authService.login(this.signUpUser.email, this.signUpUser.password)
