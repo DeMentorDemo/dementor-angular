@@ -20,7 +20,6 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.profileService.getUserDetails().subscribe(
       (res) => {
-        console.log(res);
         this.user = res;
         const created_at = new Date(res.created_at);
         this.user.created_at = this.pad(created_at.getDay()) + '.' +
