@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProfileService} from '../../profile.service';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'app-profile',
@@ -14,19 +16,31 @@ export class ProfileComponent implements OnInit {
     created_at: ''
   };
 
-  constructor(private profileService: ProfileService) {
+  constructor(private profileService: ProfileService,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.profileService.getUserDetails().subscribe(
-      (res) => {
-        this.user = res;
-        const created_at = new Date(res.created_at);
-        this.user.created_at = this.pad(created_at.getDay()) + '.' +
-          this.pad(created_at.getMonth()) + '.' +
-          created_at.getFullYear().toString();
-      }
-    );
+    let id;
+    this.route.params.subscribe(params => {
+      id = params['id'];
+    });
+    const profile = (res) => {
+      this.user = res;
+      const created_at = new Date(res.created_at);
+      this.user.created_at = this.pad(created_at.getDay()) + '.' +
+        this.pad(created_at.getMonth()) + '.' +
+        created_at.getFullYear().toString();
+    };
+    if (id) {
+      this.profileService.getUserDetailsById(id).subscribe(
+        profile
+      );
+    } else {
+      this.profileService.getUserDetails().subscribe(
+        profile
+      );
+    }
   }
 
   private pad(num): string {

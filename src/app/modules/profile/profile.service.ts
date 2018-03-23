@@ -12,4 +12,8 @@ export class ProfileService {
   public getUserDetails() {
     return this.http.get<any>(this.apiBase + '/users/show');
   }
+
+  public getUserDetailsById(id: String) {
+    return this.http.get<any>(this.apiBase + '/users/show/' + id);
+  }
 }
