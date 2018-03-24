@@ -1,0 +1,23 @@
+<div class="ui segment" *ngIf="incoming">
+  <div class="ui grid">
+    <div class="one wide column">
+      <img class="ui mini circular image" src="{{message.author.avatarSrc}}">
+    </div>
+    <div class="fifteen wide column">
+      <div class="ui small header">{{message.author.name}}</div>
+      <p style="word-break: break-all">{{message.text}}</p>
+    </div>
+  </div>
+</div>
+<div class="ui segment" *ngIf="!incoming">
+  <div class="ui grid">
+    <div class="right floated right aligned fifteen wide column">
+      <div class="ui small header">{{message.author.name}}</div>
+      <p style="word-break: break-all">{{message.text}}</p>
+    </div>
+    <div class="right floated one wide column">
+      <img class="ui mini circular image" src="{{message.author.avatarSrc}}">
+    </div>
+  </div>
+</div>
+<div class="ui divider"></div>

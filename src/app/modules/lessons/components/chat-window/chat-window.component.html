@@ -1,0 +1,21 @@
+<div class="ui segment">
+  <h3>
+    Chat - {{currentThread.name}}
+  </h3>
+
+  <app-chat-message
+    *ngFor="let message of messages | async"
+    [message]="message">
+  </app-chat-message>
+  <div class="ui input">
+    <input type="text"
+           placeholder="Write your message here..."
+           (keydown.enter)="onEnter($event)"
+           [(ngModel)]="draftMessage.text"/>
+    <span>
+      <button class="ui button" (click)="onEnter($event)">
+        Send
+      </button>
+    </span>
+  </div>
+</div>

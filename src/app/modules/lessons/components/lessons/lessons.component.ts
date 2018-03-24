@@ -1,4 +1,8 @@
 import {Component, OnInit} from '@angular/core';
+import {MessagesService} from '../../services/MessagesService';
+import {ThreadsService} from '../../services/ThreadsService';
+import {UserService} from '../../services/UserService';
+import {ChatExampleData} from '../../ChatExampleData';
 
 @Component({
   selector: 'app-lessons',
@@ -7,7 +11,10 @@ import {Component, OnInit} from '@angular/core';
 })
 export class LessonsComponent implements OnInit {
 
-  constructor() {
+  constructor(public messagesService: MessagesService,
+              public threadsService: ThreadsService,
+              public userService: UserService) {
+    ChatExampleData.init(messagesService, threadsService, userService);
   }
 
   ngOnInit() {
