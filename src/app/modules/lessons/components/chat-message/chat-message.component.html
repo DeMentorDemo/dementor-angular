@@ -1,23 +1,15 @@
-<div class="ui segment" *ngIf="incoming">
-  <div class="ui grid">
-    <div class="one wide column">
-      <img class="ui mini circular image" src="{{message.author.avatarSrc}}">
-    </div>
-    <div class="fifteen wide column">
-      <div class="ui small header">{{message.author.name}}</div>
-      <p style="word-break: break-all">{{message.text}}</p>
-    </div>
-  </div>
+<div class="ui teal left aligned raised segment receiver" *ngIf="incoming">
+  <img class="ui avatar image" src="{{message.author.avatarSrc}}">
+  <span class="ui small header">{{message.author.name}}</span>
+  <p>
+    {{message.text}}
+  </p>
 </div>
-<div class="ui segment" *ngIf="!incoming">
-  <div class="ui grid">
-    <div class="right floated right aligned fifteen wide column">
-      <div class="ui small header">{{message.author.name}}</div>
-      <p style="word-break: break-all">{{message.text}}</p>
-    </div>
-    <div class="right floated one wide column">
-      <img class="ui mini circular image" src="{{message.author.avatarSrc}}">
-    </div>
-  </div>
+
+<div class="ui teal right aligned raised segment self" *ngIf="!incoming">
+  <span class="ui small header">{{message.author.name}}</span>
+  <img class="ui avatar image" src="{{message.author.avatarSrc}}">
+  <p class="right-text">
+    {{message.text}}
+  </p>
 </div>
-<div class="ui divider"></div>

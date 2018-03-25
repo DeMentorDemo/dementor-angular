@@ -1,17 +1,8 @@
-<div class="ui tall stacked segment" (click)="clicked($event)" style="cursor: pointer">
-  <div class="ui grid">
-    <div class="two wide column">
-      <img class="ui tiny circular image" src="{{thread.avatarSrc}}">
-    </div>
-    <div class="thirteen wide column">
-      <div class="ui header">{{thread.name}} <span *ngIf="selected" style="color: navy">&bull;</span></div>
-      <p style="word-break: break-all">{{thread.lastMessage.text}}</p>
-    </div>
-    <div class="one wide column">
-      <div class="ui circular label">
-        {{unreadMessagesCount}}
-      </div>
-    </div>
-  </div>
+<div class="thread" [ngClass]="{'active': selected}" (click)="clicked($event)">
+  <img class="ui avatar image" src="{{thread.avatarSrc}}">
+  <a class="header">{{thread.name}}</a>
+  <span class="ui circular teal label">
+  {{unreadMessagesCount}}
+  </span>
+  <div class="description">{{thread.lastMessage.text}}</div>
 </div>
-<div class="ui divider"></div>

@@ -1,4 +1,6 @@
-<app-chat-thread
-  *ngFor="let thread of threads | async"
-  [thread]="thread">
-</app-chat-thread>
+<div class="ui divided items">
+  <app-chat-thread class="item"
+                   *ngFor="let thread of threads | async"
+                   [thread]="thread">
+  </app-chat-thread>
+</div>

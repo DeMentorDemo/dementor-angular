@@ -6,9 +6,13 @@
         <a class="item" suiTabHeader="2">Учні</a>
       </div>
     </div>
-    <div class="ui inverted segment" suiTabContent="1">
-      <app-chat-threads></app-chat-threads>
-      <app-chat-window></app-chat-window>
+    <div class="ui grid" suiTabContent="1">
+      <div class="six wide column">
+        <app-chat-threads></app-chat-threads>
+      </div>
+      <div class="ten wide column scrollable">
+        <app-chat-window></app-chat-window>
+      </div>
     </div>
     <div class="ui segment" suiTabContent="2">Second tab!</div>
   </sui-tabset>
