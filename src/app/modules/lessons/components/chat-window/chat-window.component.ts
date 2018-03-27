@@ -39,23 +39,24 @@ export class ChatWindowComponent implements OnInit {
           this.currentUser = user;
         });
 
-    // TODO
-    // this.messages
-    //   .subscribe(
-    //     (messages: Array<Message>) => {
-    //       setTimeout(() => {
-    //         this.scrollToBottom();
-    //       });
-    //     });
+    this.messages
+      .subscribe(
+        () => {
+          setTimeout(() => {
+            this.scrollToBottom();
+          });
+        });
   }
 
   onEnter(event: any): void {
-    this.sendMessage();
-    event.preventDefault();
+    if (this.draftMessage.text) {
+      this.sendMessage();
+      event.preventDefault();
+    }
   }
 
   sendMessage(): void {
-    let m: Message = this.draftMessage;
+    const m: Message = this.draftMessage;
     m.author = this.currentUser;
     m.thread = this.currentThread;
     m.isRead = true;
@@ -63,10 +64,10 @@ export class ChatWindowComponent implements OnInit {
     this.draftMessage = new Message();
   }
 
-  // scrollToBottom(): void {
-  //   let scrollPane: any = this.el
-  //     .nativeElement.querySelector('.msg-container-base');
-  //   scrollPane.scrollTop = scrollPane.scrollHeight;
-  // }
+  scrollToBottom(): void {
+    const scrollPane: any = this.el
+      .nativeElement.querySelector('.scrollable');
+    scrollPane.scrollTop = scrollPane.scrollHeight;
+  }
 
 }

@@ -10,7 +10,7 @@ export class ProfileService {
   }
 
   public getUserDetails() {
-    return this.http.get<any>(this.apiBase + '/users/show');
+    return this.http.get<any>(this.apiBase + '/users/current_user');
   }
 
   public getUserDetailsById(id: String) {
