@@ -25,7 +25,7 @@ export class AuthService {
         password_confirmation: password_confirmation
       }
     };
-    return this.http.post<any>(this.apiBase + '/users/signup', body);
+    return this.http.post<any>(this.apiBase + '/users/sign_up', body);
   }
 
   public login(email: string, password: string): Observable<any> {
