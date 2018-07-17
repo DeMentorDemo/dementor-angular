@@ -28,8 +28,8 @@ export class ProfileComponent implements OnInit {
     const profile = (res) => {
       this.user = res;
       const created_at = new Date(res.created_at);
-      this.user.created_at = this.pad(created_at.getDay()) + '.' +
-        this.pad(created_at.getMonth()) + '.' +
+      this.user.created_at = this.pad(created_at.getDate()) + '.' +
+        this.pad(created_at.getMonth() + 1) + '.' +
         created_at.getFullYear().toString();
     };
     if (id) {
