@@ -1,18 +1,10 @@
-<div class="ui container">
-  <div class="ui grid">
-    <div class="row">
-      <div class="sixteen wide column">
-        <app-toolbar></app-toolbar>
-      </div>
-    </div>
-    <div class="row">
-      <div *ngIf="isLoggedIn()" class="three wide column">
-        <app-side-menu></app-side-menu>
-      </div>
+<app-toolbar></app-toolbar>
+<div class="ui container side-menu-and-content">
+  <div class="side-menu" *ngIf="isLoggedIn()">
+    <app-side-menu></app-side-menu>
+  </div>
 
-      <div class="column" [ngClass]="{'thirteen wide':isLoggedIn()}">
-        <router-outlet></router-outlet>
-      </div>
-    </div>
+  <div class="content">
+    <router-outlet></router-outlet>
   </div>
 </div>
