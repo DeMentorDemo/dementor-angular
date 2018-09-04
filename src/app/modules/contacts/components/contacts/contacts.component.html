@@ -2,9 +2,9 @@
   <div class="ui card"
        *ngFor="let user of users">
     <div class="content">
-      <a routerLink="/profile/{{user.id}}" class="header">{{user.first_name}} {{user.last_name}}</a>
+      <a routerLink="/profile/{{user.id}}" class="header">{{user.attributes.first_name}} {{user.attributes.last_name}}</a>
       <div class="meta">
-        <span class="date">Joined in {{user.created_at}}</span>
+        <span class="date">Joined in {{user.attributes.created_at}}</span>
       </div>
     </div>
   </div>

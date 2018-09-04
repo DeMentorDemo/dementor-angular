@@ -15,9 +15,9 @@ export class ContactsComponent implements OnInit {
   ngOnInit() {
     this.contactsService.getAllUsers().subscribe(
       (res) => {
-        for (const user of res) {
-          const created_at = new Date(user.created_at);
-          user.created_at = this.pad(created_at.getDay()) + '.' +
+        for (const user of res.data) {
+          const created_at = new Date(user.attributes.created_at);
+          user.attributes.created_at = this.pad(created_at.getDay()) + '.' +
             this.pad(created_at.getMonth()) + '.' +
             created_at.getFullYear().toString();
           this.users.push(user);
