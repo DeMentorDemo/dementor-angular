@@ -1,14 +1,16 @@
-import { NgModule } from '@angular/core';
-import {ProfileComponent} from '../profile/components/profile/profile.component';
+import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthGuard} from '../auth/auth.guard';
+import {ContactsComponent} from './components/contacts/contacts.component';
 
 const routes: Routes = [
-  {path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard]}
+  {path: '', component: ContactsComponent},
+  {path: 'profile/:id', loadChildren: 'app/modules/profile/profile.module#ProfileModule', canActivate: [AuthGuard]}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ContactsRoutingModule { }
+export class ContactsRoutingModule {
+}

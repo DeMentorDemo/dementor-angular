@@ -8,9 +8,11 @@ import {ChatMessageComponent} from './components/chat-message/chat-message.compo
 import {ChatThreadComponent} from './components/chat-thread/chat-thread.component';
 import {FormsModule} from '@angular/forms';
 import {servicesInjectables} from './services/services';
+import {LessonsRoutingModule} from './lessons-routing.module';
 
 @NgModule({
   imports: [
+    LessonsRoutingModule,
     CommonModule,
     SuiModule,
     FormsModule
