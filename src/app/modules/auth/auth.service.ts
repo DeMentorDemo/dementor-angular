@@ -1,17 +1,15 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/operator/shareReplay';
 import 'rxjs/add/operator/do';
-import {environment} from '../../../environments/environment';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
+import {ApiService} from '../../api.service';
 
 @Injectable()
 export class AuthService {
-  apiBase = environment.token_auth_config.apiBase;
   private token: string;
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private api: ApiService, private router: Router) {
 
   }
 
@@ -25,11 +23,11 @@ export class AuthService {
         password_confirmation: password_confirmation
       }
     };
-    return this.http.post<any>(this.apiBase + '/users', body);
+    return this.api.post('/users', body);
   }
 
   public login(email: string, password: string): Observable<any> {
-    return this.http.post<any>(this.apiBase + '/auth/login', {email, password})
+    return this.api.post('/auth/login', {email, password})
       .do(res => this.saveToken(res))
       .shareReplay();
   }
