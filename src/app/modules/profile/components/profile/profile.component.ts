@@ -27,10 +27,6 @@ export class ProfileComponent implements OnInit {
     });
     const profile = (res) => {
       this.user = res.data.attributes;
-      const created_at = new Date(res.data.attributes.created_at);
-      this.user.created_at = this.pad(created_at.getDate()) + '.' +
-        this.pad(created_at.getMonth() + 1) + '.' +
-        created_at.getFullYear().toString();
     };
     if (id) {
       this.profileService.getUserDetailsById(id).subscribe(
@@ -41,10 +37,6 @@ export class ProfileComponent implements OnInit {
         profile
       );
     }
-  }
-
-  private pad(num): string {
-    return (num < 10) ? '0' + num.toString() : num.toString();
   }
 
 }

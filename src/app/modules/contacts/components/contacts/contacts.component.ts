@@ -16,19 +16,10 @@ export class ContactsComponent implements OnInit {
     this.contactsService.getAllUsers().subscribe(
       (res) => {
         for (const user of res.data) {
-          const created_at = new Date(user.attributes.created_at);
-          user.attributes.created_at = this.pad(created_at.getDay()) + '.' +
-            this.pad(created_at.getMonth()) + '.' +
-            created_at.getFullYear().toString();
           this.users.push(user);
         }
       }
     );
   }
-
-  private pad(num): string {
-    return (num < 10) ? '0' + num.toString() : num.toString();
-  }
-
 
 }

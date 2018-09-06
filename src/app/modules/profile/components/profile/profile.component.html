@@ -2,7 +2,7 @@
   <div class="content">
     <a class="header">{{user.first_name}} {{user.last_name}}</a>
     <div class="meta">
-      <span class="date">Joined in {{user.created_at}}</span>
+      <span class="date">Joined in {{user.created_at | date: 'dd.MM.yyyy'}}</span>
     </div>
     <div class="description">
       Email: {{user.email}}
