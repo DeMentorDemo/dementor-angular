@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ContactsService} from '../../contacts.service';
+import {User} from '../../../../shared/models/user.model';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-contacts',
@@ -7,19 +9,13 @@ import {ContactsService} from '../../contacts.service';
   styleUrls: ['./contacts.component.sass']
 })
 export class ContactsComponent implements OnInit {
-  users = [];
+  users: Observable<User[]>;
 
   constructor(private contactsService: ContactsService) {
   }
 
   ngOnInit() {
-    this.contactsService.getAllUsers().subscribe(
-      (res) => {
-        for (const user of res.data) {
-          this.users.push(user);
-        }
-      }
-    );
+    this.users = this.contactsService.getAllUsers();
   }
 
 }
