@@ -1,11 +1,11 @@
 <div class="ui card centered">
   <div class="content">
-    <a class="header">{{user.first_name}} {{user.last_name}}</a>
+    <a class="header">{{user?.getFullName()}}</a>
     <div class="meta">
-      <span class="date">Joined in {{user.created_at | date: 'dd.MM.yyyy'}}</span>
+      <span class="date">Joined in {{user?.created_at | date: 'dd.MM.yyyy'}}</span>
     </div>
     <div class="description">
-      Email: {{user.email}}
+      Email: {{user?.email}}
     </div>
   </div>
 </div>

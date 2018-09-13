@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ProfileService} from '../../profile.service';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import 'rxjs/add/operator/switchMap';
+import {User} from '../../../../shared/models/user.model';
 
 @Component({
   selector: 'app-profile',
@@ -9,12 +10,7 @@ import 'rxjs/add/operator/switchMap';
   styleUrls: ['./profile.component.sass']
 })
 export class ProfileComponent implements OnInit {
-  user = {
-    email: '',
-    first_name: '',
-    last_name: '',
-    created_at: ''
-  };
+  user: User;
 
   constructor(private profileService: ProfileService,
               private route: ActivatedRoute) {
@@ -26,7 +22,7 @@ export class ProfileComponent implements OnInit {
       id = params['id'];
     });
     const profile = (res) => {
-      this.user = res.data.attributes;
+      this.user = new User().deserialize(res.data);
     };
     if (id) {
       this.profileService.getUserDetailsById(id).subscribe(
