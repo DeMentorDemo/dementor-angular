@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Message, Thread} from '../../models';
-import {ThreadsService} from '../../services/ThreadsService';
-import {MessagesService} from '../../services/MessagesService';
+import {ThreadsService} from '../../services/threads.service';
+import {MessagesService} from '../../services/messages.service';
 import * as _ from 'underscore';
 
 @Component({

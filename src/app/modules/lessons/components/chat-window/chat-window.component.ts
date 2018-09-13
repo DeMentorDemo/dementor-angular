@@ -1,9 +1,9 @@
 import {ChangeDetectionStrategy, Component, ElementRef, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Message, Thread, User} from '../../models';
-import {MessagesService} from '../../services/MessagesService';
-import {ThreadsService} from '../../services/ThreadsService';
-import {UserService} from '../../services/UserService';
+import {MessagesService} from '../../services/messages.service';
+import {ThreadsService} from '../../services/threads.service';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-chat-window',

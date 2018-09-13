@@ -104,7 +104,3 @@ export class MessagesService {
       });
   }
 }
-
-export let messagesServiceInjectables: Array<any> = [
-  MessagesService
-];

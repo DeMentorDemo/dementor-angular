@@ -7,8 +7,10 @@ import {ChatThreadsComponent} from './components/chat-threads/chat-threads.compo
 import {ChatMessageComponent} from './components/chat-message/chat-message.component';
 import {ChatThreadComponent} from './components/chat-thread/chat-thread.component';
 import {FormsModule} from '@angular/forms';
-import {servicesInjectables} from './services/services';
 import {LessonsRoutingModule} from './lessons-routing.module';
+import {MessagesService} from './services/messages.service';
+import {ThreadsService} from './services/threads.service';
+import {UserService} from './services/user.service';
 
 @NgModule({
   imports: [
@@ -24,7 +26,7 @@ import {LessonsRoutingModule} from './lessons-routing.module';
     ChatMessageComponent,
     ChatThreadComponent],
   exports: [LessonsComponent],
-  providers: [servicesInjectables]
+  providers: [MessagesService, ThreadsService, UserService]
 })
 export class LessonsModule {
 }

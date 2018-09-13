@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {ThreadsService} from '../../services/ThreadsService';
+import {ThreadsService} from '../../services/threads.service';
 
 @Component({
   selector: 'app-chat-threads',

@@ -3,7 +3,7 @@ import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs/Observable';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Thread, Message} from '../models';
-import {MessagesService} from './MessagesService';
+import {MessagesService} from './messages.service';
 import * as _ from 'underscore';
 import 'rxjs/add/operator/combineLatest';
 
@@ -75,7 +75,3 @@ export class ThreadsService {
   }
 
 }
-
-export let threadsServiceInjectables: Array<any> = [
-  ThreadsService
-];
