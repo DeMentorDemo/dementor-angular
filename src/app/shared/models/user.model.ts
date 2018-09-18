@@ -3,9 +3,9 @@ import {Deserializable} from './deserializable.model';
 export class User implements Deserializable {
   id: string;
   email: string;
-  first_name: string;
-  last_name: string;
-  created_at: Date;
+  firstName: string;
+  lastName: string;
+  createdAt: Date;
 
   deserialize(input: any) {
     this.id = input.id;
@@ -14,6 +14,6 @@ export class User implements Deserializable {
   }
 
   getFullName() {
-    return this.first_name + ' ' + this.last_name;
+    return this.firstName + ' ' + this.lastName;
   }
 }
