@@ -11,6 +11,6 @@ export class ContactsService {
 
   public getAllUsers(): Observable<User[]> {
     return this.api.get('/users')
-      .map(res => res.data.map((user: User) => new User().deserialize(user)));
+      .map(res => res.data.map((user: User) => new User(user)));
   }
 }

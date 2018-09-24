@@ -1,6 +1,6 @@
 <div class="ui cards">
   <div class="ui card"
-       *ngFor="let user of users | async">
+       *ngFor="let user of users">
     <div class="content">
       <a routerLink="/profile/{{user.id}}" class="header">{{user.getFullName()}}</a>
       <div class="meta">

@@ -22,7 +22,7 @@ export class ProfileComponent implements OnInit {
       id = params['id'];
     });
     const profile = (res) => {
-      this.user = new User().deserialize(res.data);
+      this.user = new User(res.data);
     };
     if (id) {
       this.profileService.getUserDetailsById(id).subscribe(

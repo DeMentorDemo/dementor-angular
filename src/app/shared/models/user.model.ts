@@ -1,13 +1,11 @@
-import {Deserializable} from './deserializable.model';
-
-export class User implements Deserializable {
+export class User {
   id: string;
   email: string;
   firstName: string;
   lastName: string;
   createdAt: Date;
 
-  deserialize(input: any) {
+  constructor(input: any){
     this.id = input.id;
     Object.assign(this, input.attributes);
     return this;
