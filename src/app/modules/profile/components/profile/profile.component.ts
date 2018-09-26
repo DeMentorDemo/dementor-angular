@@ -3,6 +3,7 @@ import {ProfileService} from '../../profile.service';
 import {ActivatedRoute} from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import {User} from '../../../../shared/models/user.model';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-profile',
@@ -11,9 +12,12 @@ import {User} from '../../../../shared/models/user.model';
 })
 export class ProfileComponent implements OnInit {
   user: User;
+  isEditing = false;
+  selectedFile: File = null;
 
   constructor(private profileService: ProfileService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private http: HttpClient) {
   }
 
   ngOnInit() {
@@ -33,6 +37,14 @@ export class ProfileComponent implements OnInit {
         profile
       );
     }
+  }
+
+  onFileSelected(event) {
+    this.selectedFile = event.target.files[0];
+  }
+
+  onUpload() {
+    this.profileService.updateUserDetails(this.user.id, this.selectedFile);
   }
 
 }

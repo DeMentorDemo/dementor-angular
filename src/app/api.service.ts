@@ -17,4 +17,8 @@ export class ApiService {
     return this.http.post<any>(this.apiBase + url, body);
   }
 
+  public put(url, body) {
+    return this.http.put(this.apiBase + url, body);
+  }
+
 }

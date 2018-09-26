@@ -4,10 +4,14 @@ export class User {
   firstName: string;
   lastName: string;
   createdAt: Date;
+  avatar: String;
 
-  constructor(input: any){
+  constructor(input: any) {
     this.id = input.id;
     Object.assign(this, input.attributes);
+    if (!this.avatar) {
+      this.avatar = require('assets/images/default-profile-image.png');
+    }
     return this;
   }
 
