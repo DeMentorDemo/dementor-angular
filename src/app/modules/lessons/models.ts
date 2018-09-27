@@ -1,13 +1,4 @@
-import {uuid} from './util/uuid';
-
-export class User {
-  id: string;
-
-  constructor(public name: string,
-              public avatarSrc: string) {
-    this.id = uuid();
-  }
-}
+import {User} from '../../shared/models/user.model';
 
 export class Thread {
   id: string;
@@ -18,7 +9,7 @@ export class Thread {
   constructor(id?: string,
               name?: string,
               avatarSrc?: string) {
-    this.id = id || uuid();
+    this.id = id;
     this.name = name;
     this.avatarSrc = avatarSrc;
   }
@@ -33,7 +24,7 @@ export class Message {
   thread: Thread;
 
   constructor(obj?: any) {
-    this.id = obj && obj.id || uuid();
+    this.id = obj && obj.id;
     this.isRead = obj && obj.isRead || false;
     this.sentAt = obj && obj.sentAt || new Date();
     this.author = obj && obj.author || null;

@@ -1,17 +1,16 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs/Observable';
-import {User, Thread, Message} from '../models';
+import {Thread, Message} from '../models';
 import 'rxjs/add/operator/scan';
 import 'rxjs/add/operator/publishReplay';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
+import {User} from '../../../shared/models/user.model';
 
 const initialMessages: Message[] = [];
 
-interface IMessagesOperation {
-  (messages: Message[]): Message[];
-}
+type IMessagesOperation = (messages: Message[]) => Message[];
 
 @Injectable()
 export class MessagesService {

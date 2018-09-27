@@ -4,7 +4,7 @@ export class User {
   firstName: string;
   lastName: string;
   createdAt: Date;
-  avatar: String;
+  avatar: string;
 
   constructor(input: any) {
     this.id = input.id;
