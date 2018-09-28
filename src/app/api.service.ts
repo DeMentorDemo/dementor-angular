@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../environments/environment';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class ApiService {
@@ -9,15 +10,15 @@ export class ApiService {
   constructor(private http: HttpClient) {
   }
 
-  public get(url) {
+  public get(url): Observable<any> {
     return this.http.get<any>(this.apiBase + url);
   }
 
-  public post(url, body) {
+  public post(url, body): Observable<any> {
     return this.http.post<any>(this.apiBase + url, body);
   }
 
-  public put(url, body) {
+  public put(url, body): Observable<any> {
     return this.http.put(this.apiBase + url, body);
   }
 

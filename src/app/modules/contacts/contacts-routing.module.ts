@@ -5,7 +5,7 @@ import {ContactsComponent} from './components/contacts/contacts.component';
 
 const routes: Routes = [
   {path: '', component: ContactsComponent},
-  {path: 'profile/:id', loadChildren: 'app/modules/profile/profile.module#ProfileModule', canActivate: [AuthGuard]}
+  {path: 'profile', loadChildren: 'app/modules/profile/profile.module#ProfileModule', canActivate: [AuthGuard]}
 ];
 
 @NgModule({
