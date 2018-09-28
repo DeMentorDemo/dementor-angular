@@ -3,7 +3,6 @@ import {CommonModule} from '@angular/common';
 import {ToolbarComponent} from './components/toolbar/toolbar.component';
 import {AboutModule} from '../about/about.module';
 import {MakeUsModule} from '../make-us/make-us.module';
-import {ProfileModule} from '../profile/profile.module';
 import {ToolbarRoutingModule} from './toolbar-routing.module';
 
 @NgModule({
@@ -11,8 +10,7 @@ import {ToolbarRoutingModule} from './toolbar-routing.module';
     CommonModule,
     ToolbarRoutingModule,
     AboutModule,
-    MakeUsModule,
-    ProfileModule
+    MakeUsModule
   ],
   declarations: [ToolbarComponent],
   exports: [ToolbarComponent, ToolbarRoutingModule]

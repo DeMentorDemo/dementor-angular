@@ -11,6 +11,7 @@ import {LessonsRoutingModule} from './lessons-routing.module';
 import {MessagesService} from './services/messages.service';
 import {ThreadsService} from './services/threads.service';
 import {UserService} from './services/user.service';
+import {LessonsService} from './services/lessons.service';
 
 @NgModule({
   imports: [
@@ -26,7 +27,7 @@ import {UserService} from './services/user.service';
     ChatMessageComponent,
     ChatThreadComponent],
   exports: [LessonsComponent],
-  providers: [MessagesService, ThreadsService, UserService]
+  providers: [MessagesService, ThreadsService, UserService, LessonsService]
 })
 export class LessonsModule {
 }
