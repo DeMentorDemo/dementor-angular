@@ -14,10 +14,10 @@ export class ProfileComponent implements OnInit {
   user: User;
   isEditing = false;
   selectedFile: File = null;
+  changeAvatarLabel = 'Change Avatar';
 
   constructor(private profileService: ProfileService,
-              private route: ActivatedRoute,
-              private http: HttpClient) {
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -41,10 +41,12 @@ export class ProfileComponent implements OnInit {
 
   onFileSelected(event) {
     this.selectedFile = event.target.files[0];
+    this.changeAvatarLabel = 'Avatar Selected';
   }
 
   onUpload() {
-    this.profileService.updateUserDetails(this.user.id, this.selectedFile);
+    this.profileService.updateUserDetails(this.user.id, this.selectedFile)
+      .subscribe(res => this.user.avatar = res.avatar);
   }
 
 }

@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from '../../api.service';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class ProfileService {
@@ -15,10 +16,9 @@ export class ProfileService {
     return this.api.get('/users/' + id);
   }
 
-  public updateUserDetails(id: String, file: File) {
+  public updateUserDetails(id: String, file: File): Observable<any> {
     const fd = new FormData();
     fd.append('image', file, file.name);
-    this.api.put('/users/' + id, fd)
-      .subscribe(res => console.log(res));
+    return this.api.put('/users/' + id, fd);
   }
 }
