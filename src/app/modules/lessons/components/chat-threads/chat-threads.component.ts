@@ -2,6 +2,9 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {ThreadsService} from '../../services/threads.service';
 import {Thread} from '../../models';
+import {FormControl} from '@angular/forms';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
 
 @Component({
   selector: 'app-chat-threads',
@@ -12,7 +15,7 @@ import {Thread} from '../../models';
 export class ChatThreadsComponent implements OnInit {
   threads: Observable<Thread[]>;
   threadsOptions: Observable<Thread[]>;
-  search_input = '';
+  searchInput = new FormControl();
 
   constructor(public threadsService: ThreadsService) {
     this.threads = threadsService.orderedThreads;
@@ -20,15 +23,13 @@ export class ChatThreadsComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  search(event) {
-    if (this.search_input.length < 3) {
-      this.threads = this.threadsOptions;
-      return;
-    }
-    this.threads = this.threadsOptions
-      .map(threads => threads.filter((thread: Thread) => thread.name === this.search_input));
+    this.threads = this.searchInput.valueChanges
+      .debounceTime(300)
+      .distinctUntilChanged()
+      .flatMap(res => {
+        return this.threadsOptions
+          .map(threads => threads.filter((thread: Thread) => thread.name.toLowerCase().search(res.toLowerCase()) >= 0));
+      });
   }
 
 }

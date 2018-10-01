@@ -1,8 +1,7 @@
 <div class="ui input">
   <input type="text"
          placeholder="Search"
-         [(ngModel)]="search_input"
-         (ngModelChange)="search($event)">
+         [formControl]="searchInput">
 </div>
 <div class="ui divided items">
   <app-chat-thread class="item"
