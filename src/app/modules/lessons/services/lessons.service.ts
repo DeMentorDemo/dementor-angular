@@ -4,7 +4,7 @@ import {ThreadsService} from './threads.service';
 import {UserService} from './user.service';
 import {Message, Thread} from '../models';
 import {ApiService} from '../../../api.service';
-import {User} from '../../../shared/models/user.model';
+import {User} from '../../../core/models/user.model';
 import * as moment from 'moment';
 import {Observable} from 'rxjs/Observable';
 

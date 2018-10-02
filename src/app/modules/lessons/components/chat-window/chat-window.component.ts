@@ -4,7 +4,7 @@ import {Message, Thread} from '../../models';
 import {MessagesService} from '../../services/messages.service';
 import {ThreadsService} from '../../services/threads.service';
 import {UserService} from '../../services/user.service';
-import {User} from '../../../../shared/models/user.model';
+import {User} from '../../../../core/models/user.model';
 
 @Component({
   selector: 'app-chat-window',

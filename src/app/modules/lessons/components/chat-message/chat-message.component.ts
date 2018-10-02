@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Message} from '../../models';
 import {UserService} from '../../services/user.service';
-import {User} from '../../../../shared/models/user.model';
+import {User} from '../../../../core/models/user.model';
 
 @Component({
   selector: 'app-chat-message',

@@ -6,7 +6,7 @@ import 'rxjs/add/operator/scan';
 import 'rxjs/add/operator/publishReplay';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
-import {User} from '../../../shared/models/user.model';
+import {User} from '../../../core/models/user.model';
 
 const initialMessages: Message[] = [];
 

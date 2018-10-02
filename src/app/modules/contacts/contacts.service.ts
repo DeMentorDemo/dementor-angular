@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from '../../api.service';
-import {User} from '../../shared/models/user.model';
+import {User} from '../../core/models/user.model';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
