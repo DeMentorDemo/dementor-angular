@@ -1,12 +1,12 @@
-import {Injectable} from '@angular/core';
-import {MessagesService} from './messages.service';
-import {ThreadsService} from './threads.service';
-import {UserService} from './user.service';
-import {Message, Thread} from '../models';
-import {ApiService} from '../../../api.service';
-import {User} from '../../../core/models/user.model';
+import { Injectable } from '@angular/core';
+import { MessagesService } from './messages.service';
+import { ThreadsService } from './threads.service';
+import { UserService } from './user.service';
+import { Message, Thread } from '../models';
+import { ApiService } from '../../../api.service';
+import { User } from '../../../core/models/user.model';
 import * as moment from 'moment';
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class LessonsService {
@@ -21,9 +21,10 @@ export class LessonsService {
     this.api.get('/current_user').subscribe(res => {
       const currentUser: User = new User(res.data);
       this.userService.setCurrentUser(currentUser);
-      const usersSubscription$: Observable<any> = this.api.get('/users').map(users_res => {
-        return users_res.data.map((user: User) => new User(user));
-      });
+      const usersSubscription$: Observable<any> = this.api.get('/users')
+        .map(users_res => {
+          return users_res.data.map((user: User) => new User(user));
+        });
       usersSubscription$
         .subscribe(users => {
           let thread: Thread;
@@ -50,6 +51,5 @@ export class LessonsService {
           this.threadsService.setCurrentThread(thread);
         });
     });
-
   }
 }
