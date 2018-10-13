@@ -1,14 +1,14 @@
 <div class="ui teal left aligned raised segment receiver" *ngIf="incoming">
-  <img class="ui avatar image" src="{{message.author.avatarSrc}}">
-  <span class="ui small header">{{message.author.name}}</span>
+  <img class="ui avatar image" src="{{message.author?.avatar}}">
+  <span class="ui small header">{{message.author?.getFullName()}}</span>
   <p>
     {{message.text}}
   </p>
 </div>
 
 <div class="ui teal right aligned raised segment self" *ngIf="!incoming">
-  <span class="ui small header">{{message.author.name}}</span>
-  <img class="ui avatar image" src="{{message.author.avatarSrc}}">
+  <span class="ui small header">{{message.author?.getFullName()}}</span>
+  <img class="ui avatar image" src="{{message.author?.avatar}}">
   <p class="right-text">
     {{message.text}}
   </p>

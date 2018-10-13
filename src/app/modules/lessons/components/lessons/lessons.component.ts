@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {LessonsService} from '../../services/lessons.service';
 
 @Component({
@@ -9,10 +9,10 @@ import {LessonsService} from '../../services/lessons.service';
 export class LessonsComponent implements OnInit {
 
   constructor(public lessonsService: LessonsService) {
-    lessonsService.init();
   }
 
   ngOnInit() {
+    this.lessonsService.init();
   }
 
 }

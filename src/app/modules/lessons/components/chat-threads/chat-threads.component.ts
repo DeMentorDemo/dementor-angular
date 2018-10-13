@@ -5,7 +5,7 @@ import { Thread } from '../../models';
 import { FormControl } from '@angular/forms';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import 'rxjs/add/operator/first';
 
 @Component({
   selector: 'app-chat-threads',
@@ -23,24 +23,24 @@ export class ChatThreadsComponent implements OnInit {
 
   ngOnInit() {
     this.threadsOptions = this.threadsService.orderedThreads;
+    this.threadsOptions
+      .debounceTime(300)
+      .first()
+      .subscribe((threads: Thread[]) => {
+      this.threadsService.setCurrentThread(threads[0]);
+    });
     this.searchInput = new FormControl();
     this.threads = this.threadsOptions;
-    this.threadsOptions.subscribe(res => {
-      this.threads = new BehaviorSubject<Thread[]>(res);
-    });
     this.searchInput.valueChanges
       .debounceTime(300)
       .distinctUntilChanged()
-      .flatMap(res => {
-        return this.threadsOptions
-          .map(threads => {
+      .subscribe(input => {
+        this.threads = this.threadsOptions
+          .map((threads: Thread[]) => {
             return threads.filter((thread: Thread) => {
-              return thread.name.toLowerCase().search(res.toLowerCase()) >= 0;
+              return thread.name.toLowerCase().search(input.toLowerCase()) >= 0;
             });
           });
-      })
-      .subscribe(res => {
-        this.threads.next(res);
       });
   }
 

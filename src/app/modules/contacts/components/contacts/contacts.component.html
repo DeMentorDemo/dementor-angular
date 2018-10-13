@@ -6,6 +6,12 @@
       <div class="meta">
         <span class="date">Joined in {{user.createdAt | date: 'dd.MM.yyyy'}}</span>
       </div>
+      <div
+        class="ui bottom attached button"
+        (click)="onAddToChat(user.id)">
+        <i class="add icon"></i>
+        Add to Chats
+      </div>
     </div>
   </div>
 </div>

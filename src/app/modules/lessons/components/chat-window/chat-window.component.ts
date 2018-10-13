@@ -1,10 +1,11 @@
-import {ChangeDetectionStrategy, Component, ElementRef, OnInit} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {Message, Thread} from '../../models';
-import {MessagesService} from '../../services/messages.service';
-import {ThreadsService} from '../../services/threads.service';
-import {UserService} from '../../services/user.service';
-import {User} from '../../../../core/models/user.model';
+import { ChangeDetectionStrategy, Component, ElementRef, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Message, Thread } from '../../models';
+import { MessagesService } from '../../services/messages.service';
+import { ThreadsService } from '../../services/threads.service';
+import { UserService } from '../../services/user.service';
+import { User } from '../../../../core/models/user.model';
+import { ApiService } from '../../../../api.service';
 
 @Component({
   selector: 'app-chat-window',
@@ -21,6 +22,7 @@ export class ChatWindowComponent implements OnInit {
   constructor(public messagesService: MessagesService,
               public threadsService: ThreadsService,
               public userService: UserService,
+              private api: ApiService,
               public el: ElementRef) {
   }
 
@@ -62,8 +64,12 @@ export class ChatWindowComponent implements OnInit {
     m.thread = this.currentThread;
     m.sentAt = new Date();
     m.isRead = true;
-    this.messagesService.addMessage(m);
-    this.draftMessage = new Message();
+    this.api.post('/chats/' + m.thread.id + '/messages', {
+      message: { userId: m.author.id, chatId: m.thread.id, text: m.text }
+    }).subscribe(() => {
+      this.messagesService.addMessage(m);
+      this.draftMessage = new Message();
+    });
   }
 
   scrollToBottom(): void {

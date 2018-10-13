@@ -5,12 +5,15 @@ export class Thread {
   lastMessage: Message;
   name: string;
   avatarSrc: string;
+  user: User;
 
   constructor(id?: string,
               name?: string,
+              user?: User,
               avatarSrc?: string) {
     this.id = id;
     this.name = name;
+    this.user = user;
     this.avatarSrc = avatarSrc;
   }
 }
