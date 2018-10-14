@@ -62,12 +62,10 @@ export class ChatWindowComponent implements OnInit {
     const m: Message = this.draftMessage;
     m.author = this.currentUser;
     m.thread = this.currentThread;
-    m.sentAt = new Date();
     m.isRead = true;
     this.api.post('/chats/' + m.thread.id + '/messages', {
       message: { userId: m.author.id, chatId: m.thread.id, text: m.text }
     }).subscribe(() => {
-      this.messagesService.addMessage(m);
       this.draftMessage = new Message();
     });
   }

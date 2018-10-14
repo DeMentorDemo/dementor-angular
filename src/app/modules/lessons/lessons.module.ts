@@ -13,6 +13,7 @@ import { ThreadsService } from './services/threads.service';
 import { UserService } from './services/user.service';
 import { LessonsService } from './services/lessons.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ActionCableService } from 'angular2-actioncable';
 
 @NgModule({
   imports: [
@@ -29,7 +30,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ChatMessageComponent,
     ChatThreadComponent],
   exports: [LessonsComponent],
-  providers: [MessagesService, ThreadsService, UserService, LessonsService]
+  providers: [MessagesService, ThreadsService, UserService, LessonsService, ActionCableService]
 })
 export class LessonsModule {
 }

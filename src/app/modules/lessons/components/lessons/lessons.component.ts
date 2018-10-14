@@ -13,6 +13,7 @@ export class LessonsComponent implements OnInit {
 
   ngOnInit() {
     this.lessonsService.init();
+    this.lessonsService.messagesSocketSubscribe();
   }
 
 }
