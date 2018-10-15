@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {LessonsService} from '../../services/lessons.service';
+import { LessonsService } from '../../services/lessons.service';
+import { ThreadsService } from '../../services/threads.service';
 
 @Component({
   selector: 'app-lessons',
@@ -8,12 +9,13 @@ import {LessonsService} from '../../services/lessons.service';
 })
 export class LessonsComponent implements OnInit {
 
-  constructor(public lessonsService: LessonsService) {
+  constructor(public lessonsService: LessonsService,
+              private threadsService: ThreadsService) {
   }
 
   ngOnInit() {
     this.lessonsService.init();
-    this.lessonsService.messagesSocketSubscribe();
+    this.threadsService.setChatConnection();
   }
 
 }

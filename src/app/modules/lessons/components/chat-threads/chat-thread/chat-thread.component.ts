@@ -3,6 +3,7 @@ import {Message, Thread} from '../../../models';
 import {ThreadsService} from '../../../services/threads.service';
 import {MessagesService} from '../../../services/messages.service';
 import * as _ from 'underscore';
+import { LessonsService } from '../../../services/lessons.service';
 
 @Component({
   selector: 'app-chat-thread',
@@ -39,6 +40,7 @@ export class ChatThreadComponent implements OnInit {
             0
           );
       });
+    this.threadsService.messagesSocketSubscribe(this.thread.id);
   }
 
   clicked(event: any): void {

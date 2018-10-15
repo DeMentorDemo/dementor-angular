@@ -1,50 +1,21 @@
 import { Injectable } from '@angular/core';
 import { MessagesService } from './messages.service';
-import { ThreadsService } from './threads.service';
 import { UserService } from './user.service';
 import { Message, Thread } from '../models';
 import { ApiService } from '../../../api.service';
 import { User } from '../../../core/models/user.model';
 import { Observable } from 'rxjs/Observable';
-import { ActionCableService, Channel } from 'angular2-actioncable';
-import { Subscription } from 'rxjs/Subscription';
 
 @Injectable()
 export class LessonsService {
-  users: User[];
-  threads: Thread[];
-  currentUser: User;
-  loaded = false;
-  subscription: Subscription;
+  private users: User[];
+  private threads: Thread[];
+  private currentUser: User;
+  private loaded = false;
 
   constructor(public messagesService: MessagesService,
-              public threadsService: ThreadsService,
               public userService: UserService,
-              public api: ApiService,
-              private cableService: ActionCableService) {
-  }
-
-  messagesSocketSubscribe() {
-    // Open a connection and obtain a reference to the channel
-    const channel: Channel = this.cableService
-      .cable('ws://localhost:4000/api/cable')
-      .channel('MessagesChannel');
-
-    // Subscribe to incoming messages
-    this.subscription = channel.received()
-      .map(data => {
-        const messageData = data.data;
-        const author = this.users.find(u => u.id === messageData.attributes.userId.toString()) || this.currentUser;
-        const thread = this.threads.find(t => t.id === messageData.attributes.chatId.toString());
-        return new Message({
-          id: messageData.id,
-          author: author,
-          sentAt: new Date(messageData.attributes.createdAt),
-          text: messageData.attributes.text,
-          thread: thread
-        });
-      })
-      .subscribe((message: Message) => this.messagesService.addMessage(message));
+              public api: ApiService) {
   }
 
   public init(): void {
@@ -100,5 +71,17 @@ export class LessonsService {
       err => console.log(err),
       () => this.loaded = true
     );
+  }
+
+  public getUsers(): User[] {
+    return this.users;
+  }
+
+  public getThreads(): Thread[] {
+    return this.threads;
+  }
+
+  public getCurrentUser(): User {
+    return this.currentUser;
   }
 }
